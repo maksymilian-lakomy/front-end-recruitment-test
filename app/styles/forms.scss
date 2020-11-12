@@ -1,0 +1,228 @@
+@import "mixins";
+@import "variables";
+
+.custom-background-color {
+  background-color: #f2f2f2 !important;
+}
+
+.ml-form-wrapper {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  padding: 2rem 5rem;
+}
+
+.ml-form {
+  $list-padding: 2.5rem;
+
+  padding: 0 $list-padding;
+
+  &__list {
+    padding: unset;
+    counter-reset: custom-counter;
+    list-style: none;
+  }
+
+  &__element {
+    counter-increment: custom-counter;
+    position: relative;
+  }
+
+  &__element-header {
+    @include header();
+
+    display: flex;
+    align-items: center;
+
+    &::before {
+      $counter-size: 1.5rem;
+
+      content: counter(custom-counter);
+      position: absolute;
+      color: white;
+      background-color: black;
+      width: $counter-size;
+      height: $counter-size;
+      border-radius: $counter-size / 2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      font-size: 1.125rem;
+      top: 50%;
+      left: -$list-padding;
+      transform: translateY(-50%);
+    }
+  }
+
+  &__element-header-icon {
+    height: 1rem;
+    fill: $header-icon-color;
+  }
+}
+
+.ml-form-fields-wrapper {
+  $column-amount: 2;
+
+  display: grid;
+  grid-template-columns: repeat(#{$column-amount}, 1fr);
+  column-gap: $column-gap;
+  row-gap: $row-gap;
+
+  @mixin fill-row() {
+    grid-column-start: 1;
+    grid-column-end: $column-amount + 1;
+  }
+
+  &--fill-every-second-row > *:nth-child(#{$column-amount + 1}n) {
+    @include fill-row();
+  }
+
+  &--fill-every-second-row-from-first
+    > *:nth-child(#{$column-amount + 1}n + 1) {
+    @include fill-row();
+  }
+}
+
+.ml-form-field {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding: 0.625rem;
+  position: relative;
+
+  @include border-style($form-fields-border-color);
+
+  &__label {
+    font-weight: bold;
+    color: $form-fields-label-color;
+    font-size: 0.875rem;
+  }
+
+  &__input-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &__input {
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 1.125rem;
+    border: unset;
+    padding: unset;
+    margin: unset;
+    outline: none;
+    color: $form-fields-text-color;
+    width: 100%;
+
+    &::placeholder {
+      color: $form-fields-text-color;
+    }
+
+    &--number {
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+    }
+  }
+
+  &__select {
+    @extend .ml-form-field__input;
+
+    color: $form-fields-select-color;
+  }
+
+  &__image {
+    height: 1rem;
+  }
+
+  &__icon {
+    fill: $form-fields-text-color;
+    display: inline-block;
+  }
+}
+
+.ml-form-submit {
+  border: unset;
+  width: 100%;
+  display: flex;
+  background-color: $submit-button-color;
+  color: white;
+  font-family: inherit;
+  font-weight: bold;
+  font-size: 1rem;
+  text-transform: uppercase;
+  justify-content: center;
+  padding: 1rem 0;
+  cursor: pointer;
+  margin: $row-gap * 2.5 0;
+
+  @include border-style($submit-button-border-color);
+
+  &__icon {
+    fill: white;
+    height: 1.25rem;
+  }
+}
+
+.ml-summary {
+  margin-top: $header-font-size + 2 * $header-margin;
+
+  display: block;
+  background-color: white;
+  padding: 0.5rem;
+  height: fit-content;
+
+  @include border-style($form-fields-border-color);
+
+  &__wrapper {
+    border: 2px dotted $form-fields-border-color;
+    border-radius: 0.25rem;
+    padding: 1rem;
+  }
+
+  &__header {
+    @include header();
+
+    margin: 0.25rem 0;
+  }
+
+  &__list {
+    display: block;
+    list-style: none;
+    padding: unset;
+    border-bottom: 1px dashed $form-fields-border-color;
+  }
+
+  &__element {
+    display: flex;
+    color: black;
+    font-weight: 500;
+    margin-bottom: $row-gap;
+  }
+
+  &__element-price {
+    margin-left: auto;
+
+    &::before {
+      content: "$ ";
+    }
+  }
+
+  &__footer {
+    @include header(false);
+
+    display: flex;
+  }
+
+  &__total {
+    font-size: 2rem;
+    margin-left: auto;
+
+    &::before {
+      content: "$ ";
+    }
+  }
+}
