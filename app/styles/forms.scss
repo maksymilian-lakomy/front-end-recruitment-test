@@ -9,6 +9,12 @@
   display: grid;
   grid-template-columns: 2fr 1fr;
   padding: 2rem 5rem;
+
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column-reverse;
+    padding: 2rem 2rem;
+  }
 }
 
 .ml-form {
@@ -65,25 +71,33 @@
 }
 
 .ml-form-fields-grid {
-  $column-amount: 2;
+  display: flex;
+  flex-direction: column;
 
-  display: grid;
-  grid-template-columns: repeat(#{$column-amount}, 1fr);
-  column-gap: $column-gap;
-  row-gap: $row-gap;
-
-  @mixin fill-row() {
-    grid-column-start: 1;
-    grid-column-end: $column-amount + 1;
+  > * {
+    margin-bottom: $row-gap;
   }
 
-  &--fill-every-second-row > *:nth-child(#{$column-amount + 1}n) {
-    @include fill-row();
-  }
+  @media (min-width: 768px) {
+    $column-amount: 2;
 
-  &--fill-every-second-row-from-first
-    > *:nth-child(#{$column-amount + 1}n + 1) {
-    @include fill-row();
+    display: grid;
+    grid-template-columns: repeat(#{$column-amount}, 1fr);
+    column-gap: $column-gap;
+
+    @mixin fill-row() {
+      grid-column-start: 1;
+      grid-column-end: $column-amount + 1;
+    }
+
+    &--fill-every-second-row > *:nth-child(#{$column-amount + 1}n) {
+      @include fill-row();
+    }
+
+    &--fill-every-second-row-from-first
+      > *:nth-child(#{$column-amount + 1}n + 1) {
+      @include fill-row();
+    }
   }
 }
 
@@ -211,6 +225,11 @@
   background-color: white;
   padding: 0.5rem;
   height: fit-content;
+
+  @media (max-width: 768px) {
+    margin-top: unset;
+    margin-bottom: $header-margin * 2;
+  }
 
   &__wrapper {
     border: 2px dotted $form-fields-border-color;
