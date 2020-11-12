@@ -103,7 +103,7 @@
   &__label {
     font-weight: bold;
     color: $form-fields-label-color;
-    font-size: 0.875rem;
+    font-size: $label-font-size;
     line-height: 1.5;
   }
 
@@ -235,11 +235,14 @@
     display: flex;
     color: black;
     font-weight: 500;
-    margin-bottom: $row-gap;
+    margin-bottom: $row-gap / 2;
+    font-size: $label-font-size;
+    line-height: 1.75;
   }
 
   &__element-price {
     margin-left: auto;
+    flex-shrink: 0;
 
     &::before {
       content: "$ ";
