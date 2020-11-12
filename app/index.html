@@ -704,3 +704,21 @@
     <!-- Built with love using Web Starter Kit -->
   </body>
 </html>
+
+<script src="./scripts/validation.js"></script>
+<script>
+  const formFields = {
+    "first-name": new Validation().addRequiredValidator(),
+    "last-name": new Validation().addRequiredValidator(),
+    "email": new Validation().addEmailValidator(),
+    "postal-code": new Validation().addPostalCodeValidator(),
+    "phone-number": new Validation().addPhoneNumberValidator(),
+    "credit-card-number": new Validation().addCreditCardNumberValidator(),
+    "security-code": new Validation().addExactLengthValidator(3),
+  };
+
+  function onSubmit(event) {
+    event.preventDefault();
+
+  }
+</script>
