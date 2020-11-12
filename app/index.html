@@ -396,7 +396,7 @@
           id="checkout"
         >
           <div class="ml-form-wrapper">
-            <form class="ml-form">
+            <form class="ml-form" id="form" onsubmit="onSubmit(event)">
               <ol class="ml-form__list">
                 <li class="ml-form__element">
                   <h3 class="ml-form__element-header">Personal information</h3>
@@ -404,73 +404,85 @@
                   <section
                     class="ml-form-fields-wrapper ml-form-fields-wrapper--fill-every-second-row"
                   >
-                    <div class="ml-form-field">
-                      <label class="ml-form-field__label" for="first-name">
-                        First name
-                      </label>
-                      <input
-                        class="ml-form-field__input"
-                        type="text"
-                        id="first-name"
-                        value="Elon"
-                      />
+                    <div class="ml-form-field-wrapper">
+                      <div class="ml-form-field">
+                        <label class="ml-form-field__label" for="first-name">
+                          First name
+                        </label>
+                        <input
+                          class="ml-form-field__input"
+                          type="text"
+                          id="first-name"
+                          value="Elon"
+                        />
+                      </div>
                     </div>
 
-                    <div class="ml-form-field">
-                      <label class="ml-form-field__label" for="last-name">
-                        Last name
-                      </label>
-                      <input
-                        class="ml-form-field__input"
-                        type="text"
-                        id="last-name"
-                        value="Musk"
-                      />
+                    <div class="ml-form-field-wrapper">
+                      <div class="ml-form-field">
+                        <label class="ml-form-field__label" for="last-name">
+                          Last name
+                        </label>
+                        <input
+                          class="ml-form-field__input"
+                          type="text"
+                          id="last-name"
+                          value="Musk"
+                        />
+                      </div>
                     </div>
 
-                    <div class="ml-form-field">
-                      <label class="ml-form-field__label" for="email">
-                        Email
-                      </label>
-                      <input
-                        class="ml-form-field__input"
-                        type="text"
-                        id="email"
-                        value="elon@spacex.com"
-                      />
+                    <div class="ml-form-field-wrapper">
+                      <div class="ml-form-field">
+                        <label class="ml-form-field__label" for="email">
+                          Email
+                        </label>
+                        <input
+                          class="ml-form-field__input"
+                          type="text"
+                          id="email"
+                          value="elon@spacex.com"
+                        />
+                      </div>
                     </div>
 
-                    <div class="ml-form-field">
-                      <label class="ml-form-field__label" for="country">
-                        Country
-                      </label>
-                      <select class="ml-form-field__select" id="country">
-                        <option>United States</option>
-                      </select>
+                    <div class="ml-form-field-wrapper">
+                      <div class="ml-form-field">
+                        <label class="ml-form-field__label" for="country">
+                          Country
+                        </label>
+                        <select class="ml-form-field__select" id="country">
+                          <option>United States</option>
+                        </select>
+                      </div>
                     </div>
 
-                    <div class="ml-form-field">
-                      <label class="ml-form-field__label" for="postal-code">
-                        Postal Code
-                      </label>
-                      <input
-                        class="ml-form-field__input ml-form-field__input--number"
-                        type="number"
-                        id="postal-code"
-                        value="10001"
-                      />
+                    <div class="ml-form-field-wrapper">
+                      <div class="ml-form-field">
+                        <label class="ml-form-field__label" for="postal-code">
+                          Postal Code
+                        </label>
+                        <input
+                          class="ml-form-field__input ml-form-field__input--number"
+                          type="number"
+                          id="postal-code"
+                          value="10001"
+                        />
+                      </div>
                     </div>
 
-                    <div class="ml-form-field">
-                      <label class="ml-form-field__label" for="phone-number">
-                        Phone Number
-                      </label>
-                      <input
-                        class="ml-form-field__input"
-                        type="tel"
-                        id="phone-number"
-                        value="(212) 692-93-92"
-                      />
+                    <div class="ml-form-field-wrapper">
+                      <div class="ml-form-field">
+                        <label class="ml-form-field__label" for="phone-number">
+                          Phone Number
+                        </label>
+                        <input
+                          class="ml-form-field__input"
+                          type="tel"
+                          id="phone-number"
+                          value="(212) 692-93-92"
+                        />
+                      </div>
                     </div>
                   </section>
                 </li>
@@ -493,61 +505,70 @@
                   <section
                     class="ml-form-fields-wrapper ml-form-fields-wrapper--fill-every-second-row-from-first"
                   >
-                    <div class="ml-form-field">
-                      <label
-                        class="ml-form-field__label"
-                        for="credit-card-number"
-                      >
-                        Credit Card Number
-                      </label>
-                      <div class="ml-form-field__input-wrapper">
-                        <input
-                          class="ml-form-field__input ml-form-field__input--number"
-                          type="number"
-                          id="credit-card-number"
-                          placeholder="0000 – 0000 – 0000 – 0000"
-                        />
-                        <img
-                          class="ml-form-field__image"
-                          src="images/visa-logo.svg"
-                        />
+                    <div class="ml-form-field-wrapper">
+                      <div class="ml-form-field">
+                        <label
+                          class="ml-form-field__label"
+                          for="credit-card-number"
+                        >
+                          Credit Card Number
+                        </label>
+                        <div class="ml-form-field__input-wrapper">
+                          <input
+                            class="ml-form-field__input ml-form-field__input--number"
+                            type="text"
+                            id="credit-card-number"
+                            placeholder="0000 – 0000 – 0000 – 0000"
+                          />
+                          <img
+                            class="ml-form-field__image"
+                            src="images/visa-logo.svg"
+                          />
+                        </div>
                       </div>
                     </div>
 
-                    <div class="ml-form-field">
-                      <label class="ml-form-field__label" for="security-code">
-                        Security code
-                      </label>
-                      <div class="ml-form-field__input-wrapper">
+                    <div class="ml-form-field-wrapper">
+                      <div class="ml-form-field">
+                        <label class="ml-form-field__label" for="security-code">
+                          Security code
+                        </label>
+                        <div class="ml-form-field__input-wrapper">
+                          <input
+                            class="ml-form-field__input"
+                            type="password"
+                            id="security-code"
+                            placeholder="***"
+                            maxlength="3"
+                          />
+                          <svg
+                            class="ml-form-field__icon"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            width="24"
+                          >
+                            <path
+                              d="M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z"
+                            />
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="ml-form-field-wrapper">
+                      <div class="ml-form-field">
+                        <label
+                          class="ml-form-field__label"
+                          for="expiration-date"
+                        >
+                          Expiration date
+                        </label>
                         <input
                           class="ml-form-field__input"
-                          type="password"
-                          id="security-code"
-                          placeholder="***"
-                          maxlength="3"
+                          type="month"
+                          id="expiration-date"
                         />
-                        <svg
-                          class="ml-form-field__icon"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          width="24"
-                        >
-                          <path
-                            d="M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z"
-                          />
-                        </svg>
                       </div>
-                    </div>
-
-                    <div class="ml-form-field">
-                      <label class="ml-form-field__label" for="expiration-date">
-                        Expiration date
-                      </label>
-                      <input
-                        class="ml-form-field__input"
-                        type="month"
-                        id="expiration-date"
-                      />
                     </div>
                   </section>
                 </li>
@@ -704,3 +725,71 @@
     <!-- Built with love using Web Starter Kit -->
   </body>
 </html>
+
+<script src="./scripts/validation.js"></script>
+<script>
+  const formFields = {
+    "first-name": new Validation().addRequiredValidator(),
+    "last-name": new Validation().addRequiredValidator(),
+    email: new Validation().addEmailValidator(),
+    "postal-code": new Validation().addPostalCodeValidator(),
+    "phone-number": new Validation().addPhoneNumberValidator(),
+    "credit-card-number": new Validation().addCreditCardNumberValidator(),
+    "security-code": new Validation().addExactLengthValidator(3),
+    "expiration-date": new Validation().addRequiredValidator(),
+  };
+
+  function createError(error) {
+    const errorElement = document.createElement("div");
+    errorElement.className = "ml-form-field-error";
+    errorElement.textContent = error;
+
+    return errorElement;
+  }
+
+  function createSuccessMessage(successMessage) {
+    const formElement = document.querySelector("#form");
+
+    const successMessageElement = document.createElement("div");
+    successMessageElement.className = "ml-form-success-message";
+    successMessageElement.textContent = successMessage;
+
+    formElement.appendChild(successMessageElement);
+  }
+
+  function clearSuccessMessage() {
+    const formElement = document.querySelector("#form");
+    const successMessageElement = document.querySelectorAll(".ml-form-success-message");
+
+    successMessageElement.forEach(element => formElement.removeChild(element));
+  }
+
+  function onSubmit(event) {
+    event.preventDefault();
+    clearSuccessMessage();    
+
+    let successful = true;
+
+    for (let formName in formFields) {
+      const currentElement = document.querySelector(`#${formName}`);
+      const parentElement = currentElement.closest(".ml-form-field-wrapper");
+
+      const validationResult = formFields[formName].validate(
+        currentElement.value
+      );
+
+      successful && (successful = !validationResult.length);
+
+      parentElement
+        .querySelectorAll(".ml-form-field-error")
+        .forEach((errorElement) => parentElement.removeChild(errorElement));
+
+      validationResult.forEach((error) => {
+        const errorElement = createError(error);
+        parentElement.appendChild(errorElement);
+      });
+    }
+
+    successful && createSuccessMessage("Form submitted!");
+  }
+</script>
