@@ -113,10 +113,12 @@
     margin: unset;
     outline: none;
     color: $form-fields-text-color;
+    height: 1.375rem;
     width: 100%;
 
     &::placeholder {
       color: $form-fields-text-color;
+      opacity: 0.5;
     }
 
     &--number {
@@ -141,7 +143,14 @@
   &__icon {
     fill: $form-fields-text-color;
     display: inline-block;
+    height: 1.5rem;
   }
+}
+
+.ml-form-field-error {
+  color: $form-fields-error-color;
+  font-weight: bold;
+  margin-top: $row-gap / 2;
 }
 
 .ml-form-submit {
@@ -165,6 +174,13 @@
     fill: white;
     height: 1.25rem;
   }
+}
+
+.ml-form-success-message {
+  color: $submit-button-color;
+  font-weight: bold;
+  text-align: center;
+  width: 100%;
 }
 
 .ml-summary {

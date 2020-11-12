@@ -67,8 +67,9 @@ class Validation {
   addCreditCardNumberValidator() {
     const creditCardNumberValidator = (value) => {
       const length = `${value}`.length;
+      const simpleRegex = /^[0-9-]*$/;
 
-      if (length !== 16 && length !== 19) {
+      if ((length !== 16 && length !== 19) || !simpleRegex.test(`${value}`)) {
         return "This is not a proper credit card number!";
       }
     };

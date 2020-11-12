@@ -11,8 +11,9 @@ $form-fields-label-color: #565656;
 $form-fields-border-color: #dcdcdc;
 $form-fields-text-color: #9f9f9f;
 $form-fields-select-color: #333333;
+$form-fields-error-color: #ea0000;
 
-$header-icon-color: $label-color;
+$header-icon-color: $form-fields-label-color;
 
 $submit-button-color: #6bd400;
 $submit-button-border-color: #5cb204;
