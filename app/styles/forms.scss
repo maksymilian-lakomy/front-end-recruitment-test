@@ -53,6 +53,9 @@ $header-margin: 1.5rem;
   &__element-header {
     @include header();
 
+    display: flex;
+    align-items: center;
+
     &::before {
       content: counter(custom-counter);
       position: absolute;
@@ -70,6 +73,11 @@ $header-margin: 1.5rem;
       left: -$list-padding;
       transform: translateY(-50%);
     }
+  }
+
+  &__element-header-icon {
+    height: 1rem;
+    fill: #484848;
   }
 }
 
@@ -101,6 +109,7 @@ $header-margin: 1.5rem;
   flex-direction: column;
   background-color: white;
   padding: 0.625rem;
+  position: relative;
 
   @include border-style(#dcdcdc);
 
@@ -108,6 +117,12 @@ $header-margin: 1.5rem;
     font-weight: bold;
     color: #565656;
     font-size: 0.875rem;
+  }
+
+  &__input-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
   }
 
   &__input {
@@ -119,6 +134,11 @@ $header-margin: 1.5rem;
     margin: unset;
     outline: none;
     color: #9f9f9f;
+    width: 100%;
+
+    &::placeholder {
+      color: #9f9f9f;
+    }
 
     &--number {
       &::-webkit-outer-spin-button,
@@ -134,6 +154,15 @@ $header-margin: 1.5rem;
 
     color: #333333;
   }
+
+  &__image {
+    height: 1rem;
+  }
+
+  &__icon {
+    fill: #9f9f9f;
+    display: inline-block;
+  }
 }
 
 .ml-form-submit {
@@ -144,6 +173,7 @@ $header-margin: 1.5rem;
   color: white;
   font-family: inherit;
   font-weight: bold;
+  font-size: 1rem;
   text-transform: uppercase;
   justify-content: center;
   padding: 1rem 0;
@@ -151,6 +181,11 @@ $header-margin: 1.5rem;
   margin: $row-gap * 2.5 0;
 
   @include border-style(#5cb204);
+
+  &__icon {
+    fill: white;
+    height: 1.25rem;
+  }
 }
 
 .ml-summary {
