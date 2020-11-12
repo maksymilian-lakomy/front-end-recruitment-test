@@ -1,27 +1,5 @@
-@mixin border-style($color) {
-  border-radius: 0.25rem;
-  border-bottom: 2px solid $color;
-}
-
-@mixin header($uppercase: true) {
-  font: inherit;
-  font-weight: bold;
-  color: black;
-  font-size: $header-font-size;
-  line-height: 1rem;
-  @if $uppercase == true {
-    text-transform: uppercase;
-  }
-  position: relative;
-  margin: $header-margin 0;
-}
-
-$column-gap: 0.75rem;
-$row-gap: 1rem;
-
-// HEADERS
-$header-font-size: 1rem;
-$header-margin: 1.5rem;
+@import "mixins";
+@import "variables";
 
 .custom-background-color {
   background-color: #f2f2f2 !important;
@@ -34,7 +12,6 @@ $header-margin: 1.5rem;
 }
 
 .ml-form {
-  $counter-size: 1.5rem;
   $list-padding: 2.5rem;
 
   padding: 0 $list-padding;
@@ -57,6 +34,8 @@ $header-margin: 1.5rem;
     align-items: center;
 
     &::before {
+      $counter-size: 1.5rem;
+
       content: counter(custom-counter);
       position: absolute;
       color: white;
@@ -77,7 +56,7 @@ $header-margin: 1.5rem;
 
   &__element-header-icon {
     height: 1rem;
-    fill: #484848;
+    fill: $header-icon-color;
   }
 }
 
@@ -111,11 +90,11 @@ $header-margin: 1.5rem;
   padding: 0.625rem;
   position: relative;
 
-  @include border-style(#dcdcdc);
+  @include border-style($form-fields-border-color);
 
   &__label {
     font-weight: bold;
-    color: #565656;
+    color: $form-fields-label-color;
     font-size: 0.875rem;
   }
 
@@ -133,11 +112,11 @@ $header-margin: 1.5rem;
     padding: unset;
     margin: unset;
     outline: none;
-    color: #9f9f9f;
+    color: $form-fields-text-color;
     width: 100%;
 
     &::placeholder {
-      color: #9f9f9f;
+      color: $form-fields-text-color;
     }
 
     &--number {
@@ -152,7 +131,7 @@ $header-margin: 1.5rem;
   &__select {
     @extend .ml-form-field__input;
 
-    color: #333333;
+    color: $form-fields-select-color;
   }
 
   &__image {
@@ -160,7 +139,7 @@ $header-margin: 1.5rem;
   }
 
   &__icon {
-    fill: #9f9f9f;
+    fill: $form-fields-text-color;
     display: inline-block;
   }
 }
@@ -169,7 +148,7 @@ $header-margin: 1.5rem;
   border: unset;
   width: 100%;
   display: flex;
-  background-color: #6bd400;
+  background-color: $submit-button-color;
   color: white;
   font-family: inherit;
   font-weight: bold;
@@ -180,7 +159,7 @@ $header-margin: 1.5rem;
   cursor: pointer;
   margin: $row-gap * 2.5 0;
 
-  @include border-style(#5cb204);
+  @include border-style($submit-button-border-color);
 
   &__icon {
     fill: white;
@@ -196,10 +175,10 @@ $header-margin: 1.5rem;
   padding: 0.5rem;
   height: fit-content;
 
-  @include border-style(#dcdcdc);
+  @include border-style($form-fields-border-color);
 
   &__wrapper {
-    border: 2px dotted #dcdcdc;
+    border: 2px dotted $form-fields-border-color;
     border-radius: 0.25rem;
     padding: 1rem;
   }
@@ -214,7 +193,7 @@ $header-margin: 1.5rem;
     display: block;
     list-style: none;
     padding: unset;
-    border-bottom: 1px dashed #dcdcdc;
+    border-bottom: 1px dashed $form-fields-border-color;
   }
 
   &__element {
