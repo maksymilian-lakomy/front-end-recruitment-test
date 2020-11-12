@@ -87,7 +87,8 @@
   display: flex;
   flex-direction: column;
   background-color: white;
-  padding: 0.625rem;
+  padding: $form-fields-padding;
+  padding-top: $form-fields-padding / 2;
   position: relative;
 
   @include border-style($form-fields-border-color);
@@ -138,11 +139,16 @@
 
   &__image {
     height: 1rem;
+    position: absolute;
+    right: $form-fields-padding;
+    top: 50%;
+    transform: translateY(-50%);
   }
 
   &__icon {
+    @extend .ml-form-field__image;
+
     fill: $form-fields-text-color;
-    display: inline-block;
     height: 1.5rem;
   }
 }

@@ -465,7 +465,7 @@
                         </label>
                         <input
                           class="ml-form-field__input ml-form-field__input--number"
-                          type="number"
+                          type="text"
                           id="postal-code"
                           value="10001"
                         />
@@ -514,18 +514,18 @@
                         >
                           Credit Card Number
                         </label>
-                        <div class="ml-form-field__input-wrapper">
-                          <input
-                            class="ml-form-field__input ml-form-field__input--number"
-                            type="text"
-                            id="credit-card-number"
-                            placeholder="0000 – 0000 – 0000 – 0000"
-                          />
-                          <img
-                            class="ml-form-field__image"
-                            src="images/visa-logo.svg"
-                          />
-                        </div>
+                        <input
+                          class="ml-form-field__input ml-form-field__input--number"
+                          type="text"
+                          id="credit-card-number"
+                          placeholder="0000 – 0000 – 0000 – 0000"
+                          maxlength="19"
+                        />
+                        <img
+                          class="ml-form-field__image"
+                          alt="card company placeholder"
+                          src="images/visa-logo.svg"
+                        />
                       </div>
                     </div>
 
@@ -534,25 +534,23 @@
                         <label class="ml-form-field__label" for="security-code">
                           Security code
                         </label>
-                        <div class="ml-form-field__input-wrapper">
-                          <input
-                            class="ml-form-field__input"
-                            type="password"
-                            id="security-code"
-                            placeholder="***"
-                            maxlength="3"
+                        <input
+                          class="ml-form-field__input"
+                          type="password"
+                          id="security-code"
+                          placeholder="***"
+                          maxlength="3"
+                        />
+                        <svg
+                          class="ml-form-field__icon"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          width="24"
+                        >
+                          <path
+                            d="M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z"
                           />
-                          <svg
-                            class="ml-form-field__icon"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            width="24"
-                          >
-                            <path
-                              d="M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z"
-                            />
-                          </svg>
-                        </div>
+                        </svg>
                       </div>
                     </div>
 
@@ -760,14 +758,18 @@
 
   function clearSuccessMessage() {
     const formElement = document.querySelector("#form");
-    const successMessageElement = document.querySelectorAll(".ml-form-success-message");
+    const successMessageElement = document.querySelectorAll(
+      ".ml-form-success-message"
+    );
 
-    successMessageElement.forEach(element => formElement.removeChild(element));
+    successMessageElement.forEach((element) =>
+      formElement.removeChild(element)
+    );
   }
 
   function onSubmit(event) {
     event.preventDefault();
-    clearSuccessMessage();    
+    clearSuccessMessage();
 
     let successful = true;
 
