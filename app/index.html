@@ -800,7 +800,7 @@
       successful && (successful = !validationResult.length);
 
       parentElement
-        .querySelectorAll(`${errorClassName}`)
+        .querySelectorAll(`.${errorClassName}`)
         .forEach((errorElement) => parentElement.removeChild(errorElement));
 
       validationResult.forEach((error) => {
