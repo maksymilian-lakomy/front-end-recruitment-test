@@ -25,10 +25,14 @@
   &__element {
     counter-increment: custom-counter;
     position: relative;
+
+    &:not(:last-child) {
+      margin-bottom: $row-gap * 3;
+    }
   }
 
   &__element-header {
-    @include header();
+    @include header-style();
 
     display: flex;
     align-items: center;
@@ -60,7 +64,7 @@
   }
 }
 
-.ml-form-fields-wrapper {
+.ml-form-fields-grid {
   $column-amount: 2;
 
   display: grid;
@@ -84,19 +88,23 @@
 }
 
 .ml-form-field {
-  display: flex;
-  flex-direction: column;
-  background-color: white;
-  padding: $form-fields-padding;
-  padding-top: $form-fields-padding / 2;
-  position: relative;
+  $block-name: &;
 
-  @include border-style($form-fields-border-color);
+  &__wrapper {
+    @include border-style($form-fields-border-color);
+
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: $form-fields-padding-y $form-fields-padding-x;
+    position: relative;
+  }
 
   &__label {
     font-weight: bold;
     color: $form-fields-label-color;
     font-size: 0.875rem;
+    line-height: 1.5;
   }
 
   &__input-wrapper {
@@ -114,8 +122,8 @@
     margin: unset;
     outline: none;
     color: $form-fields-text-color;
-    height: 1.375rem;
     width: 100%;
+    height: 1.375rem;
 
     &::placeholder {
       color: $form-fields-text-color;
@@ -129,38 +137,46 @@
         margin: 0;
       }
     }
+
+    + #{$block-name}__icon {
+      fill: $form-fields-text-color;
+    }
   }
 
   &__select {
-    @extend .ml-form-field__input;
+    @extend #{$block-name}__input;
 
     color: $form-fields-select-color;
-  }
+    appearance: none;
 
-  &__image {
-    height: 1rem;
-    position: absolute;
-    right: $form-fields-padding;
-    top: 50%;
-    transform: translateY(-50%);
+    + #{$block-name}__icon {
+      fill: $form-fields-select-color;
+    }
   }
 
   &__icon {
-    @extend .ml-form-field__image;
+    height: 1rem;
+    position: absolute;
+    right: $form-fields-padding-x;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
 
-    fill: $form-fields-text-color;
-    height: 1.5rem;
+    &--large {
+      height: 1.5rem;
+    }
+  }
+
+  &__error {
+    color: $form-fields-error-color;
+    font-weight: bold;
+    margin-top: $row-gap / 2;
   }
 }
 
-.ml-form-field-error {
-  color: $form-fields-error-color;
-  font-weight: bold;
-  margin-top: $row-gap / 2;
-}
+.ml-form-submit-button {
+  @include border-style($submit-button-border-color);
 
-.ml-form-submit {
-  border: unset;
   width: 100%;
   display: flex;
   background-color: $submit-button-color;
@@ -173,8 +189,6 @@
   padding: 1rem 0;
   cursor: pointer;
   margin: $row-gap * 2.5 0;
-
-  @include border-style($submit-button-border-color);
 
   &__icon {
     fill: white;
@@ -190,14 +204,13 @@
 }
 
 .ml-summary {
-  margin-top: $header-font-size + 2 * $header-margin;
+  @include border-style($form-fields-border-color);
 
+  margin-top: $header-font-size + 2 * $header-margin;
   display: block;
   background-color: white;
   padding: 0.5rem;
   height: fit-content;
-
-  @include border-style($form-fields-border-color);
 
   &__wrapper {
     border: 2px dotted $form-fields-border-color;
@@ -206,7 +219,7 @@
   }
 
   &__header {
-    @include header();
+    @include header-style();
 
     margin: 0.25rem 0;
   }
@@ -234,7 +247,7 @@
   }
 
   &__footer {
-    @include header(false);
+    @include header-style(false);
 
     display: flex;
   }

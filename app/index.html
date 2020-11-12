@@ -402,10 +402,10 @@
                   <h3 class="ml-form__element-header">Personal information</h3>
 
                   <section
-                    class="ml-form-fields-wrapper ml-form-fields-wrapper--fill-every-second-row"
+                    class="ml-form-fields-grid ml-form-fields-grid--fill-every-second-row"
                   >
-                    <div class="ml-form-field-wrapper">
-                      <div class="ml-form-field">
+                    <div class="ml-form-field">
+                      <div class="ml-form-field__wrapper">
                         <label class="ml-form-field__label" for="first-name">
                           First name
                         </label>
@@ -418,8 +418,8 @@
                       </div>
                     </div>
 
-                    <div class="ml-form-field-wrapper">
-                      <div class="ml-form-field">
+                    <div class="ml-form-field">
+                      <div class="ml-form-field__wrapper">
                         <label class="ml-form-field__label" for="last-name">
                           Last name
                         </label>
@@ -432,8 +432,8 @@
                       </div>
                     </div>
 
-                    <div class="ml-form-field-wrapper">
-                      <div class="ml-form-field">
+                    <div class="ml-form-field">
+                      <div class="ml-form-field__wrapper">
                         <label class="ml-form-field__label" for="email">
                           Email
                         </label>
@@ -446,8 +446,8 @@
                       </div>
                     </div>
 
-                    <div class="ml-form-field-wrapper">
-                      <div class="ml-form-field">
+                    <div class="ml-form-field">
+                      <div class="ml-form-field__wrapper">
                         <label class="ml-form-field__label" for="country">
                           Country
                         </label>
@@ -455,11 +455,22 @@
                           <option>United States</option>
                           <option>Poland</option>
                         </select>
+                        <svg
+                          class="ml-form-field__icon ml-form-field__icon--large"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          width="24"
+                        >
+                          <path d="M0 0h24v24H0V0z" fill="none" />
+                          <path
+                            d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"
+                          />
+                        </svg>
                       </div>
                     </div>
 
-                    <div class="ml-form-field-wrapper">
-                      <div class="ml-form-field">
+                    <div class="ml-form-field">
+                      <div class="ml-form-field__wrapper">
                         <label class="ml-form-field__label" for="postal-code">
                           Postal Code
                         </label>
@@ -472,8 +483,8 @@
                       </div>
                     </div>
 
-                    <div class="ml-form-field-wrapper">
-                      <div class="ml-form-field">
+                    <div class="ml-form-field">
+                      <div class="ml-form-field__wrapper">
                         <label class="ml-form-field__label" for="phone-number">
                           Phone Number
                         </label>
@@ -504,10 +515,10 @@
                   </h3>
 
                   <section
-                    class="ml-form-fields-wrapper ml-form-fields-wrapper--fill-every-second-row-from-first"
+                    class="ml-form-fields-grid ml-form-fields-grid--fill-every-second-row-from-first"
                   >
-                    <div class="ml-form-field-wrapper">
-                      <div class="ml-form-field">
+                    <div class="ml-form-field">
+                      <div class="ml-form-field__wrapper">
                         <label
                           class="ml-form-field__label"
                           for="credit-card-number"
@@ -522,15 +533,15 @@
                           maxlength="19"
                         />
                         <img
-                          class="ml-form-field__image"
+                          class="ml-form-field__icon"
                           alt="card company placeholder"
                           src="images/visa-logo.svg"
                         />
                       </div>
                     </div>
 
-                    <div class="ml-form-field-wrapper">
-                      <div class="ml-form-field">
+                    <div class="ml-form-field">
+                      <div class="ml-form-field__wrapper">
                         <label class="ml-form-field__label" for="security-code">
                           Security code
                         </label>
@@ -542,7 +553,7 @@
                           maxlength="3"
                         />
                         <svg
-                          class="ml-form-field__icon"
+                          class="ml-form-field__icon ml-form-field__icon--large"
                           height="24"
                           viewBox="0 0 24 24"
                           width="24"
@@ -554,8 +565,8 @@
                       </div>
                     </div>
 
-                    <div class="ml-form-field-wrapper">
-                      <div class="ml-form-field">
+                    <div class="ml-form-field">
+                      <div class="ml-form-field__wrapper">
                         <label
                           class="ml-form-field__label"
                           for="expiration-date"
@@ -572,9 +583,10 @@
                   </section>
                 </li>
               </ol>
-              <button class="ml-form-submit" type="submit">
+
+              <button class="ml-form-submit-button" type="submit">
                 <svg
-                  class="ml-form-submit__icon"
+                  class="ml-form-submit-button__icon"
                   height="24"
                   viewBox="0 0 24 24"
                   width="24"
@@ -604,7 +616,7 @@
                 <ul class="ml-summary__list">
                   <li class="ml-summary__element">
                     Total purchases
-                    <span class="ml-summary__element-price">960</span>
+                    <span class="ml-summary__element-price">960.00</span>
                   </li>
                   <li class="ml-summary__element">
                     Estimated tax
@@ -727,6 +739,10 @@
 
 <script src="./scripts/validation.js"></script>
 <script>
+  const formFieldClassName = "ml-form-field";
+  const errorClassName = `${formFieldClassName}__error`;
+  const successClassName = "ml-form-success-message";
+
   const formFields = {
     "first-name": new Validation().addRequiredValidator(),
     "last-name": new Validation().addRequiredValidator(),
@@ -740,7 +756,7 @@
 
   function createError(error) {
     const errorElement = document.createElement("div");
-    errorElement.className = "ml-form-field-error";
+    errorElement.className = errorClassName;
     errorElement.textContent = error;
 
     return errorElement;
@@ -750,7 +766,7 @@
     const formElement = document.querySelector("#form");
 
     const successMessageElement = document.createElement("div");
-    successMessageElement.className = "ml-form-success-message";
+    successMessageElement.className = successClassName;
     successMessageElement.textContent = successMessage;
 
     formElement.appendChild(successMessageElement);
@@ -759,7 +775,7 @@
   function clearSuccessMessage() {
     const formElement = document.querySelector("#form");
     const successMessageElement = document.querySelectorAll(
-      ".ml-form-success-message"
+      `.${successClassName}`
     );
 
     successMessageElement.forEach((element) =>
@@ -775,7 +791,7 @@
 
     for (let formName in formFields) {
       const currentElement = document.querySelector(`#${formName}`);
-      const parentElement = currentElement.closest(".ml-form-field-wrapper");
+      const parentElement = currentElement.closest(`.${formFieldClassName}`);
 
       const validationResult = formFields[formName].validate(
         currentElement.value
@@ -784,7 +800,7 @@
       successful && (successful = !validationResult.length);
 
       parentElement
-        .querySelectorAll(".ml-form-field-error")
+        .querySelectorAll(`${errorClassName}`)
         .forEach((errorElement) => parentElement.removeChild(errorElement));
 
       validationResult.forEach((error) => {

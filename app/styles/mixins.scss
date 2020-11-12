@@ -1,17 +1,19 @@
 @mixin border-style($color) {
+  border: unset;
   border-radius: 0.25rem;
   border-bottom: 2px solid $color;
 }
 
-@mixin header($uppercase: true) {
+@mixin header-style($uppercase: true) {
+  @if $uppercase == true {
+    text-transform: uppercase;
+  }
+
   font: inherit;
   font-weight: bold;
   color: black;
   font-size: $header-font-size;
   line-height: 1rem;
-  @if $uppercase == true {
-    text-transform: uppercase;
-  }
   position: relative;
   margin: $header-margin 0;
 }
