@@ -13,7 +13,7 @@
   @media (max-width: 768px) {
     display: flex;
     flex-direction: column-reverse;
-    padding: 2rem 2rem;
+    padding: 2rem .5rem;
   }
 }
 
@@ -107,27 +107,25 @@
   &__wrapper {
     @include border-style($form-fields-border-color);
 
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr min-content;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: 'label icon' 'input icon';
     background-color: white;
     padding: $form-fields-padding-y $form-fields-padding-x;
     position: relative;
   }
 
   &__label {
+    grid-area: label;
     font-weight: bold;
     color: $form-fields-label-color;
     font-size: $label-font-size;
     line-height: 1.5;
   }
 
-  &__input-wrapper {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
-
   &__input {
+    grid-area: input;
     font-family: inherit;
     font-weight: 500;
     font-size: 1.125rem;
@@ -164,17 +162,16 @@
     appearance: none;
 
     + #{$block-name}__icon {
+      position: absolute;
+      right: $form-fields-padding-x / 2;
       fill: $form-fields-select-color;
     }
   }
 
   &__icon {
+    grid-area: icon;
     height: 1rem;
-    position: absolute;
-    right: $form-fields-padding-x;
-    top: 50%;
-    transform: translateY(-50%);
-    pointer-events: none;
+    align-self: center;
 
     &--large {
       height: 1.5rem;
