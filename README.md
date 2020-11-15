@@ -1,5 +1,16 @@
 # Snowdog Front-end Recruitment test
 
+## Cypress
+
+To start Cypress tests use command:
+```
+yarn run cypress open
+```
+or to start tests without browser:
+```
+yarn run cypress run
+```
+
 ## Rules
 * Please do not use fake Github accounts, we want to check your contributions history since we do a lot in open source.
 * Remember to commit changes after every task.
